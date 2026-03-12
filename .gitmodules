@@ -1,0 +1,3 @@
+[submodule "components/esp-vl53l4cd"]
+	path = components/esp-vl53l4cd
+	url = https://github.com/RikisuT/esp-vl53l4cd
