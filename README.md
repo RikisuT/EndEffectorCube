@@ -1,33 +1,32 @@
-# ESP32 Servo Controller
+# End Effector Cube
 
-Interpolating servo controller firmware for Delta Robot.
+ESP32 firmware for End Effector Cube with VL53L4CD Time-of-Flight sensor.
+
+## Overview
+
+This project implements distance sensing and measurement capabilities using the VL53L4CD ToF (Time-of-Flight) sensor interfaced with an ESP32 via I2C.
 
 ## Features
 
-- **Protocol**: Fire-and-forget commands with duration
-- **Interpolation**: Hybrid linear/cubic easing for smooth motion
-- **Control Loop**: 50Hz synchronized with servo PWM
+- **Sensor**: VL53L4CD Time-of-Flight distance measurement
+- **Interface**: I2C communication (GPIO 21: SDA, GPIO 22: SCL)
+- **Frequency**: 50ms measurement intervals (20Hz)
+- **Output**: Distance in millimeters with signal strength monitoring
 
-## Protocol
+## Hardware Configuration
 
-Commands are sent over **Serial at 115200 baud**:
+- **I2C Port**: I2C_NUM_0
+- **SDA Pin**: GPIO 21
+- **SCL Pin**: GPIO 22
+- **Sensor Address**: 0x29
+- **Clock Speed**: 400 kHz
 
-```
-T<idx>:<degrees> D:<duration_ms>
-```
+## Measurements
 
-### Examples
-
-```
-T0:45.00 D:200    # Servo 0 to 45° in 200ms
-T1:90.50 D:500    # Servo 1 to 90.5° in 500ms
-T2:30.00 D:100    # Servo 2 to 30° in 100ms
-```
-
-## Configuration
-
-```c
-// main/mcpwm_servo_control_example_main.c
+The sensor provides:
+- Distance readings in millimeters
+- Signal strength (kcps/SPAD)
+- Range status validation
 
 #define NUM_SERVOS 3
 const int SERVO_PINS[NUM_SERVOS] = {2, 4, 5};

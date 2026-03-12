@@ -1,2 +1,2 @@
-idf_component_register(SRCS "mcpwm_servo_control_example_main.cpp"
+idf_component_register(SRCS "EECube.cpp"
                     INCLUDE_DIRS ".")
