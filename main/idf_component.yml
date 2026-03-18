@@ -3,3 +3,5 @@ description: End Effector Cube main application component
 url: https://github.com/rikisu/EndEffectorCube
 dependencies:
   ozarrai/esp32-ism330dhcx: "0.1.1"
+  esp-vl53l4cd:
+    git: https://github.com/RikisuT/esp-vl53l4cd.git
